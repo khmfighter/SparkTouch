@@ -1,8 +1,8 @@
-package com.xxo.spark
+package com.xxo.spark.function
 
-import org.apache.spark.rdd.RDD
-import org.apache.spark.{SparkContext, SparkConf}
 import org.apache.spark.SparkContext._
+import org.apache.spark.rdd.RDD
+import org.apache.spark.{SparkConf, SparkContext}
 
 /**
  * Created by xiaoxiaomo on 2016/6/17.
@@ -16,7 +16,7 @@ object T1_ {
     conf.setMaster("local")
 
     val context: SparkContext = new SparkContext(conf)
-    val rdd: RDD[(String, Int)] = context.textFile("f://a.txt").flatMap( _.split(" ") ).map((_ , 1)).reduceByKey(_ + _)
+    val rdd: RDD[(String, Int)] = context.textFile("/a.txt").flatMap( _.split(" ") ).map((_ , 1)).reduceByKey(_ + _)
 
     rdd.foreach( println _ )
 

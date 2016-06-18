@@ -6,3 +6,6 @@
 .project
 *.iml
 /out/
+/metastore_db/
+derby.log
+src/test/scala/com/xxo/spark/streaming/
