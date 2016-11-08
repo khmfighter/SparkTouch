@@ -4,8 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.xxo</groupId>
-    <artifactId>SparkStudy_20160616</artifactId>
+    <artifactId>SparkDeep_20160616</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>scala_touch</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <repositories>
         <repository>
