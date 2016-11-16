@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>SparkDeep_20160616</artifactId>
+        <artifactId>SparkTouch</artifactId>
         <groupId>com.xxo</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -16,6 +16,21 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <build>
+        <sourceDirectory>src/main/scala</sourceDirectory>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
+        <resources >
+            <resource >
+                <directory >src/main/resources</directory >
+            </resource >
+        </resources >
+        <testResources >
+            <testResource >
+                <directory > src/test/resources</directory >
+            </testResource >
+        </testResources >
+    </build>
 
     <dependencies>
         <dependency>
