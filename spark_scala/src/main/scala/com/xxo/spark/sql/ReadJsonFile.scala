@@ -17,7 +17,7 @@ object ReadJsonFile {
     //1. 加载配置文件
     val conf: SparkConf = new SparkConf()
     conf.setAppName( "Spark-SQL ReadJsonFile" )
-    conf.setMaster("local")
+    conf.setMaster("yarn-client")
 
     //2. 实例化上下文
     val sc: SparkContext = new SparkContext(conf)
@@ -27,7 +27,7 @@ object ReadJsonFile {
     val sqlc: SQLContext = new SQLContext( sc )
 
     //3.读取数据源
-    val schemaRDD: SchemaRDD = hiveContext.jsonFile("/src/main/resources/a.txt")
+    val schemaRDD: SchemaRDD = hiveContext.jsonFile("spark_scala/src/main/resources/a.txt")
 
 //    println( rDD )
     schemaRDD.printSchema() //表结构
