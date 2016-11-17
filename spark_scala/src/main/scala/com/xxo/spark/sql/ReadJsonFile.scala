@@ -1,14 +1,13 @@
 package com.xxo.spark.sql
 
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.{SchemaRDD, SQLContext}
-import org.apache.spark.sql.hive.HiveContext
-import org.apache.spark.{SparkContext, SparkConf}
+import org.apache.spark.sql.{DataFrame, SQLContext}
+import org.apache.spark.{SparkConf, SparkContext}
 
 /**
  *
- * Spark SQL
- * 读取Json File
+ * Spark SQL 读取Json File
+ * 运行方式和 ReadJsonStr相同
  * Created by xiaoxiaomo on 2016/6/18.
  */
 object ReadJsonFile {
@@ -17,29 +16,40 @@ object ReadJsonFile {
     //1. 加载配置文件
     val conf: SparkConf = new SparkConf()
     conf.setAppName( "Spark-SQL ReadJsonFile" )
-    conf.setMaster("yarn-client")
+
+    var master = "local"
+    if( args.length > 0 ){
+      master = args{0}
+    }
+    conf.setMaster(master)
 
     //2. 实例化上下文
     val sc: SparkContext = new SparkContext(conf)
 
+
     //2.1 实例化SQL上下文
-    val hiveContext: HiveContext = new HiveContext( sc ) //推荐使用
-    val sqlc: SQLContext = new SQLContext( sc )
+    val context: SQLContext = new SQLContext(sc)
+//    val hiveContext: HiveContext = new HiveContext( sc ) //推荐使用
+
 
     //3.读取数据源
-    val schemaRDD: SchemaRDD = hiveContext.jsonFile("spark_scala/src/main/resources/a.txt")
+    val json: DataFrame = context.read.json("spark_scala/src/main/resources/a.txt")
+
+
 
 //    println( rDD )
-    schemaRDD.printSchema() //表结构
+    json.printSchema() //表结构
+    json.show()
 
-    println( "================================================" )
+
+    println( "================================================ > " )
 
     //表操作
     //1. 注册表
-    schemaRDD.registerTempTable( "t_xiaoxiaomo" )
+    json.registerTempTable( "t_xiaoxiaomo" )
 
     //2. 创建sql
-    val rs: SchemaRDD = hiveContext.sql("select * from t_xiaoxiaomo ")
+    val rs: DataFrame = context.sql("select * from t_xiaoxiaomo ")
 //    rs.foreach( println _ ) //遍历result数据
 
     //遍历
