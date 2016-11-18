@@ -7,9 +7,13 @@ import org.apache.spark.streaming.dstream.{DStream, ReceiverInputDStream}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 /**
- * StreamingWCByWindow1
- * Created by xiaoxiaomo on 2016/6/17.
- */
+  * StreamingWCByWindow2
+  *
+  * 执行：
+  *   /opt/cloudera/parcels/CDH/bin/spark-submit --class com.xxo.spark.streaming.StreamingWCByWindow2 original-spark_scala-1.0-SNAPSHOT.jar 3 192.168.1.158 9091 15 15
+  *
+  * Created by xiaoxiaomo on 2016/8/17.
+  */
 object StreamingWCByWindow2 {
 
   def main(args: Array[String]) {
@@ -24,7 +28,7 @@ object StreamingWCByWindow2 {
     val data: ReceiverInputDStream[String] = ssc.socketTextStream(args(1),args(2).toInt,StorageLevel.MEMORY_AND_DISK)
 
     //4. 业务逻辑
-    //参数一累加函数  ，参数二表示减去最初状态的函数 ， 参数三数据时间间隔 ， 参数四处理时间间隔
+    //参数一累加函数  ，参数二表示减去最初状态的函数 ， 参数三数据时间间隔 ， 参数四处理时间间隔（应该大于等于参数三）
     val rs = data.map((_,1)).reduceByKeyAndWindow(_ + _ , _ - _, Seconds(args(3).toInt), Seconds(args(4).toInt))
     //   rs.checkpoint(interval)
 

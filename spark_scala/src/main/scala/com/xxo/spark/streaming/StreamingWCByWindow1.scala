@@ -7,9 +7,13 @@ import org.apache.spark.streaming.dstream.{DStream, ReceiverInputDStream}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 /**
- * StreamingWCByWindow1
- * Created by xiaoxiaomo on 2016/6/17.
- */
+  * StreamingWCByWindow1
+  *
+  * 执行：
+  *   /opt/cloudera/parcels/CDH/bin/spark-submit --class com.xxo.spark.streaming.StreamingWCByWindow1 original-spark_scala-1.0-SNAPSHOT.jar 3 192.168.1.158 9091 15 15
+  *
+  * Created by xiaoxiaomo on 2016/8/17.
+  */
 object StreamingWCByWindow1 {
 
   def main(args: Array[String]) {
