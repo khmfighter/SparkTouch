@@ -1,7 +1,6 @@
 package com.xxo.spark.onyarn
 
 import org.apache.spark.SparkContext
-import org.apache.spark.SparkContext._
 
 /**
   *
