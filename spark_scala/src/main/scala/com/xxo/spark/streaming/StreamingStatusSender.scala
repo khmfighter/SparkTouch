@@ -6,9 +6,14 @@ import java.net.ServerSocket
 import scala.collection.mutable.ListBuffer
 
 /**
- * Created by xiaoxiaomo on 2016/6/17.
- */
-object Sender {
+  *
+  * 连续随机发送
+  * 执行：
+  *  /opt/cloudera/parcels/CDH/bin/spark-submit --class com.xxo.spark.streaming.StreamingStatusSender original-spark_scala-1.0-SNAPSHOT.jar 9091 1000
+  *
+  *  Created by xiaoxiaomo on 2016/6/17.
+  */
+object StreamingStatusSender {
 
   def generateContent(index: Int) :String = {
     val charList = ListBuffer[Char]()
@@ -52,5 +57,5 @@ object Sender {
     }
   }
 
-  //spark-submit --class com.xxo.com.xxo.spark.streaming.StreamingStatus original-SparkStudy_20160616-1.0-SNAPSHOT.jar 2017 1000
+
 }
