@@ -6,6 +6,14 @@ import org.apache.spark.SparkContext._
 
 
 /**
+  * WordCount 处理阶段 对比MapReduce
+  * Map：
+  *   1. 文件读取
+  *   2. 单词分割
+  *   3. 单词计算
+  *
+  * Reduce：
+  *   1. 单词归类合并
   *
   * Created by TangXD on 2016/11/18.
   */
