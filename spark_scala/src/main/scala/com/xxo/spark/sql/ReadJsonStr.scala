@@ -19,9 +19,10 @@ object ReadJsonStr {
 
   def main(args: Array[String]) {
 
-    //1. 加载配置文件
+    //1. 加载配置文件spark.driver.allowMultipleContexts
     val conf: SparkConf = new SparkConf()
     conf.setAppName( "Spark-SQL ReadJsonStr" )
+    conf.set("spark.driver.allowMultipleContexts","true") //TODO
 
     var master = "local"
     if( args.length > 0 ){
