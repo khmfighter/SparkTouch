@@ -9,6 +9,7 @@
     <modules>
         <module>scala_touch</module>
         <module>spark_scala</module>
+        <module>spark_source</module>
     </modules>
     <packaging>pom</packaging>
 

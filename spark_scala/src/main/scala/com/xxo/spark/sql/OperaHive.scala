@@ -18,7 +18,7 @@ object OperaHive {
 
     val conf: SparkConf = new SparkConf()
     conf.setAppName( "Spark-SQL OperaHive" )
-
+    conf.set("spark.driver.allowMultipleContexts","true")
     var master = "local"
     if( args.length > 0 ){
       master = args{0}
